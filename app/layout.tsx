@@ -4,6 +4,7 @@ import { Inter as FontSans, Lato, Nunito } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { VideoDialogProvider } from "@/components/ui/VideoDialogContext";
 import VideoDialog from "@/components/ui/VideoDialog";
+import Navbar from "@/components/common/Navbar";
 
 import "@/styles.css";
 import { TailwindIndicator } from "@/components/ui/breakpoint-indicator";
@@ -25,8 +26,8 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Tina",
-  description: "Tina Cloud Starter",
+  title: "医学影像标准化平台",
+  description: "医学影像检查项目名称及编码标准官网",
 };
 
 export default function RootLayout({
@@ -35,10 +36,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn(fontSans.variable, nunito.variable, lato.variable)}>
+    <html lang="zh" className={cn(fontSans.variable, nunito.variable, lato.variable)}>
       <body className="min-h-screen bg-background font-sans antialiased">
         <VideoDialogProvider>
-          {children}
+          <Navbar />
+          <main>{children}</main>
           <VideoDialog />
         </VideoDialogProvider>
         <TailwindIndicator />
