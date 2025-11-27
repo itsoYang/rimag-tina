@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Calendar, ArrowRight, Tag } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import client from '@/tina/__generated__/client';
 
 interface NewsItem {
