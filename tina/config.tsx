@@ -7,6 +7,11 @@ import Author from "./collection/author";
 import Page from "./collection/page";
 import Tag from "./collection/tag";
 
+// 医学影像标准化官网内容
+import News from "./collection/news";
+import About from "./collection/about";
+import Overview from "./collection/overview";
+
 const config = defineConfig({
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID!,
   branch:
@@ -32,7 +37,7 @@ const config = defineConfig({
     basePath: nextConfig.basePath?.replace(/^\//, '') || '', // The base path of the app (could be /blog)
   },
   schema: {
-    collections: [Page, Post, Author, Tag, Global],
+    collections: [Page, Post, Author, Tag, Global, News, About, Overview],
   },
 });
 
