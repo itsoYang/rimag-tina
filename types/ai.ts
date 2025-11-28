@@ -66,8 +66,7 @@ export type MessageTypeValue =
   | 'report'
   | 'reportgen'
   | 'report_quality'
-  | 'questions'
-  | 'knowledge';
+  | 'questions';
 
 // Message type constants
 export const MessageType = {
@@ -77,7 +76,6 @@ export const MessageType = {
   REPORTGEN: 'reportgen' as MessageTypeValue,
   REPORTQUALITY: 'report_quality' as MessageTypeValue,
   QUESTIONS: 'questions' as MessageTypeValue,
-  KNOWLEDGE: 'knowledge' as MessageTypeValue,
 } as const;
 
 export type MessageTypeKey = keyof typeof MessageType;

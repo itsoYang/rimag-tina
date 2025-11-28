@@ -7,7 +7,7 @@ import MessageList from './MessageList';
 import ChatInput, { ChatInputRef } from './ChatInput';
 import GenerationProgress from './GenerationProgress';
 import { Trash2 } from 'lucide-react';
-import { standardizationService, recommendationService, reportService, reportGenService, reportQualityService, knowledgeService } from '@/lib/api/ai-services';
+import { standardizationService, recommendationService, reportService, reportGenService, reportQualityService } from '@/lib/api/ai-services';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ChatBoxProps {
@@ -63,7 +63,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({
         const assistantMessage = createMessage(
           MessageType.STANDARDIZATION,
           'assistant',
-          response.formattedText || '',
+          '',
           response.data
         );
 
@@ -255,51 +255,6 @@ const ChatBox: React.FC<ChatBoxProps> = ({
     }
   }, [chatState]);
 
-  // Handle knowledge Q&A request
-  const handleKnowledge = useCallback(async (message: Message) => {
-    try {
-      const newMessage = createMessage(MessageType.REPORT, 'assistant', '');
-
-      setChatState((prev) => ({
-        ...prev,
-        messages: [...prev.messages, newMessage],
-      }));
-
-      const dialogueHistory = chatState.messages
-        .filter((msg) => typeof msg.content === 'string')
-        .map((msg) => ({
-          role: msg.role,
-          content: msg.content as string,
-        }));
-      dialogueHistory.push({
-        role: message.role,
-        content: message.content as string,
-      });
-
-      await knowledgeService.chat(dialogueHistory, (content) => {
-        setChatState((prev) => {
-          const updatedMessages = [...prev.messages];
-          const lastMessage = updatedMessages[updatedMessages.length - 1];
-          if (lastMessage) {
-            lastMessage.content = content;
-          }
-          return {
-            ...prev,
-            messages: updatedMessages,
-            isGenerating: false,
-          };
-        });
-      });
-    } catch (error) {
-      console.error('Error in handleKnowledge:', error);
-      setChatState((prev) => ({
-        ...prev,
-        isGenerating: false,
-        error: '知识问答失败',
-      }));
-    }
-  }, [chatState]);
-
   // Send message handler
   const handleSendMessage = useCallback(
     async (content: string) => {
@@ -336,9 +291,6 @@ const ChatBox: React.FC<ChatBoxProps> = ({
         case MessageType.REPORTQUALITY:
           await handleReportQuality(userMessage);
           break;
-        case MessageType.KNOWLEDGE:
-          await handleKnowledge(userMessage);
-          break;
         default:
           setChatState((prev) => ({
             ...prev,
@@ -348,7 +300,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({
           }));
       }
     },
-    [currentModule, handleStandardization, handleRecommendation, handleReportAnalysis, handleReportGeneration, handleReportQuality, handleKnowledge]
+    [currentModule, handleStandardization, handleRecommendation, handleReportAnalysis, handleReportGeneration, handleReportQuality]
   );
 
   const handleQuestionClick = useCallback((question: string) => {
