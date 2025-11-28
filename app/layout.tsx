@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { VideoDialogProvider } from "@/components/ui/VideoDialogContext";
 import VideoDialog from "@/components/ui/VideoDialog";
 import Navbar from "@/components/common/Navbar";
+import Footer from "@/components/common/Footer";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 
@@ -58,7 +59,8 @@ export default function RootLayout({
           <LanguageProvider>
             <VideoDialogProvider>
               <Navbar />
-              <main>{children}</main>
+              <main className="pt-16">{children}</main>
+              <Footer />
               <VideoDialog />
             </VideoDialogProvider>
             <TailwindIndicator />
