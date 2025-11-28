@@ -38,22 +38,23 @@ export const API_ENDPOINTS = {
 
     // Report Interpretation
     REPORT: {
-      INTERPRET: `${ENV.API_BASE_URL}/report/interpret`,
+      INTERPRET: `${ENV.API_BASE_URL}/aiplatform/report/chat_for_report_analysis`,
     },
 
     // Report Generation
     REPORT_GEN: {
-      GENERATE: `${ENV.API_BASE_URL}/report/generate`,
+      GENERATE: `${ENV.API_BASE_URL}/aiplatform/report/chat_for_report_gen`,
     },
 
     // Report Quality Control
     REPORT_QUALITY: {
-      CHECK: `${ENV.API_BASE_URL}/report/quality-check`,
+      CHECK: `${ENV.API_BASE_URL}/rimagai/report/quality_control`,
+      CRITICAL: `${ENV.API_BASE_URL}/rimagai/report/critical`,
     },
 
     // Knowledge Q&A
     KNOWLEDGE: {
-      QUERY: `${ENV.API_BASE_URL}/knowledge/query`,
+      QUERY: `${ENV.API_BASE_URL}/aiplatform/knowledge/chat_for_medqa`,
     },
   },
 } as const;

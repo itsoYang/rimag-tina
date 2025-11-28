@@ -6,6 +6,7 @@ import common from './common';
 import nav from './nav';
 import footer from './footer';
 import standards from './standards';
+import ai from './ai';
 
 export default {
   hero,
@@ -15,6 +16,7 @@ export default {
   common,
   nav,
   footer,
-  standards
+  standards,
+  ai
 };
 
