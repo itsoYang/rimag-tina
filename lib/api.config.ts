@@ -86,6 +86,7 @@ export interface APIResponse<T = any> {
   data?: T;
   error?: string;
   message?: string;
+  formattedText?: string;
 }
 
 // ============================================

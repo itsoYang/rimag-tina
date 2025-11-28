@@ -57,6 +57,7 @@ export const standardizationService = {
             confidence: 1.0,
           }],
         },
+        formattedText: content,
       };
     } catch (error) {
       console.error('Standardization error:', error);
