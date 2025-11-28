@@ -19,27 +19,27 @@ sections:
     description: |-
       致力于推动医学影像检查项目的标准化、数字化与智能化。
       作为行业的领导者，我们引领标准制定、技术创新和资源整合，为医疗行业赋能。
-    image: /images/uploads/medicine-7094412_1920.jpg
+    image: /uploads/medicine-7094412_1920.jpg
   - heading: 我们的使命
     description: |-
       - 推动医学影像检查项目的标准化，提升诊疗效率。
       - 打造互联互通的数据生态系统，实现影像结果的跨机构共享。
       - 通过人工智能与数据分析技术，优化资源配置，提升医疗服务水平。
-    image: /images/uploads/mannequin-915135_1920.jpg
+    image: /uploads/mannequin-915135_1920.jpg
 team:
   - name: 张智跃
     position: AI工程师
-    avatar: /images/uploads/ai-generated-8979714_1920.jpg
+    avatar: /uploads/ai-generated-8979714_1920.jpg
     description: >-
       在医学影像标准建设中，充分利用人工智能技术进行影像数据的自动化处理与分析。他研发了数据AI标准化清洗算法，能高效准确地提取关键特征，生成统一的影像数据标准名称和编码。同时，借助AI的深度学习能力，他对医学影像的文本数据进行精细化分类与标注，极大提升了数据标准的适用性和可靠性，推动了医学影像行业的标准化进程。
   - name: 李彩红
     position: 医疗数据分析师
-    avatar: /images/uploads/ai-generated-8845752_1920.jpg
+    avatar: /uploads/ai-generated-8845752_1920.jpg
     description: >-
       一位资深的医疗数据研究工程师，在医学影像检查项目数据标准工作中扮演着核心角色。凭借医疗数据研究背景和丰富的实践经验，她成功地推动了医学影像数据的标准化进程，为提高医疗影像的质量和诊断准确性奠定了坚实基础。协调各方资源，确保数据标准能够顺利地在医疗机构内部得到贯彻执行，定期收集和分析反馈意见，针对存在的问题及时进行调整和优化，确保数据标准能够持续满足医疗行业的需求。
   - name: 刘老师
     position: 项目负责人
-    avatar: /images/uploads/ai-generated-9019727_1920.png
+    avatar: /uploads/ai-generated-9019727_1920.png
     description: >-
       30年丰富的信息化、医疗影像、数据分析、人工智能、大模型和行业经验，具有敏锐的洞察和逻辑思维。带领团队从数据和行业资料中提取数据结构和医疗信息，制定这个数据标准，沿着这个路还有很多工作继续。
 ---

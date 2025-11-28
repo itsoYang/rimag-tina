@@ -3,7 +3,7 @@ title: >-
   International Overview of Medical Imaging Examination Item Naming and Coding
   Standards
 date: 2024-10-13T16:00:00.000Z
-cover: /images/uploads/image.png
+cover: /uploads/image.png
 summary: >-
   Intruduce a comprehensive overview of the importance, implementation, and
   critical role of medical imaging check item naming and coding standards in

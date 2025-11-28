@@ -2,7 +2,7 @@
 title: 标准建设（二）
 author: charlie
 date: 2023-08-31T16:00:00.000Z
-cover: /images/uploads/images_loinc.jpeg
+cover: /uploads/images_loinc.jpeg
 summary: 国内外相关医学影像标准情况简介
 category: industry
 tags:

@@ -2,7 +2,7 @@
 title: Welcome to Medical Imaging Standards Platform
 author: Standards Team
 date: 2024-03-20T00:00:00.000Z
-cover: /images/uploads/welcome.jpg
+cover: /uploads/welcome.jpg
 summary: Explore our medical imaging standardization platform and learn how to improve healthcare efficiency.
 category: news
 tags:

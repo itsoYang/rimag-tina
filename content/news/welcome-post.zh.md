@@ -1,7 +1,7 @@
 ---
 title: 《医学影像检查项目名称及编码标准》官网正式启用
 date: 2024-12-17T16:00:00.000Z
-cover: /images/uploads/截屏2024-12-15 21.57.25.png
+cover: /uploads/截屏2024-12-15 21.57.25.png
 summary: 探索我们的医学影像检查项目标准化平台，了解如何提高医疗效率。
 category: news
 tags:

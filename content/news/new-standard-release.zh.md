@@ -2,7 +2,7 @@
 author: 医学标准委员会
 title: 医学影像标准正式发布
 date: 2024-01-02T16:00:00.000Z
-cover: /images/uploads/download.jpg
+cover: /uploads/download.jpg
 summary: 最新版医学影像标准为医疗标准化带来重大改进。
 category: announcement
 tags:

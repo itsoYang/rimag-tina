@@ -51,7 +51,7 @@ In recent years, the National Health Commission has issued a series of documents
 
 Since 2015, Yimai Sunshine has built a cloud service platform for medical imaging information, serving both internal and external imaging centers and radiology departments of medical institutions. The platform provides business process management, department management, and patient services. As of October 2023, the cumulative number of imaging examinations has reached 20 million, with over 250,000 different examination item names collected. After deduplication, there are 99,172 / 26,657 / 81,628 different names for CT/MR/DR respectively, making the data difficult to utilize effectively.
 
-![](</images/uploads/截屏2024-12-20 21.38.21.png>)
+![](</uploads/截屏2024-12-20 21.38.21.png>)
 
 ## III. Standard Compilation Process
 

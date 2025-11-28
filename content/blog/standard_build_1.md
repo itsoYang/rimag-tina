@@ -2,7 +2,7 @@
 title: 标准建设（一）
 author: charlie
 date: 2023-12-31T16:00:00.000Z
-cover: /images/uploads/巴别塔.jpg
+cover: /uploads/巴别塔.jpg
 summary: 没有数据标准化，企业数字化就会沦为一座数字“巴别塔“！
 category: industry
 tags:
@@ -27,7 +27,7 @@ tags:
 
 通过检查项目名称的标准化，医院管理可以实现从财务到资源配置的全方位优化，为医院的现代化、规范化发展提供强有力的支撑
 
-![](</images/uploads/截屏2024-12-15 21.30.56.png>)
+![](</uploads/截屏2024-12-15 21.30.56.png>)
 
 ## 3、区域医疗需要统一的标准
 

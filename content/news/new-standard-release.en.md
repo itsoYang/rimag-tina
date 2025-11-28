@@ -2,7 +2,7 @@
 author: Medical Standards Committee
 title: New Medical Imaging Standard Released
 date: 2024-03-15T00:00:00.000Z
-cover: /images/uploads/download.jpg
+cover: /uploads/download.jpg
 summary: >-
   The latest version of medical imaging standards brings significant
   improvements to healthcare standardization.

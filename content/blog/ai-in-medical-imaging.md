@@ -2,7 +2,7 @@
 title: 标准化：人工智能的基石
 author: charlie
 date: 2024-04-30T16:00:00.000Z
-cover: /images/uploads/ImgUrl_1.gif
+cover: /uploads/ImgUrl_1.gif
 summary: 医学影像检查项目名称标准化对人工智能的意义。
 category: research
 tags:
@@ -23,7 +23,7 @@ tags:
 * 模型泛化能力受限： 使用命名混乱的数据训练出的AI模型，其在不同医院、不同设备采集的数据上的表现可能会大打折扣，即泛化能力较弱。
 * 科研合作受阻： 医学影像研究往往需要多中心、大规模的数据共享与合作。如果数据命名标准不一致，会严重阻碍数据共享和科研合作的进行。
 
-![](/images/uploads/images_biaozhu.jpeg)
+![](/uploads/images_biaozhu.jpeg)
 
 医学影像检查项目名称标准化对人工智能的作用
 
@@ -44,6 +44,6 @@ tags:
 
 结论
 
-![](/images/uploads/Gemini_Generated_Image_7bmjdh7bmjdh7bmj.jpeg)
+![](/uploads/Gemini_Generated_Image_7bmjdh7bmjdh7bmj.jpeg)
 
 医学影像检查项目名称标准化是医学影像人工智能发展的重要基石。只有建立统一的标准和规范，并切实加以执行，才能充分发挥AI在医学影像分析中的潜力，为临床诊断、治疗和科研带来更大的价值。我们应该充分认识到这项工作的重要性，共同推动医学影像检查项目名称的标准化进程。

@@ -2,7 +2,7 @@
 title: 医学影像标准化实施指南
 author: 张医生
 date: 2024-03-20T00:00:00.000Z
-cover: /images/uploads/dicom.jpg
+cover: /uploads/dicom.jpg
 summary: 本指南将帮助您了解如何在医疗机构中有效实施医学影像标准化。
 category: technical
 tags:
