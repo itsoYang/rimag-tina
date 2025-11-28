@@ -5,6 +5,7 @@ import Global from "./collection/global";
 
 // 医学影像标准化官网内容
 import News from "./collection/news";
+import Blog from "./collection/blog";
 import About from "./collection/about";
 import Overview from "./collection/overview";
 
@@ -33,7 +34,7 @@ const config = defineConfig({
     basePath: nextConfig.basePath?.replace(/^\//, '') || '', // The base path of the app (could be /blog)
   },
   schema: {
-    collections: [Global, News, About, Overview],
+    collections: [Global, News, Blog, About, Overview],
   },
 });
 

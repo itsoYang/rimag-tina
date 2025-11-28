@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import ContentLayout from '@/components/content/ContentLayout';
 import { motion } from 'motion/react';
-import { Target, Users } from 'lucide-react';
+import { Target } from 'lucide-react';
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
 import client from '@/tina/__generated__/client';
 import { components } from '@/components/mdx-components';
@@ -15,12 +15,6 @@ interface AboutData {
     heading?: string;
     description?: string;
     image?: string;
-  }[];
-  team?: {
-    name?: string;
-    position?: string;
-    avatar?: string;
-    description?: string;
   }[];
 }
 
@@ -41,7 +35,6 @@ export default function About() {
             title: result.data.about.title,
             content: result.data.about.content,
             sections: result.data.about.sections as any,
-            team: result.data.about.team as any
           });
         }
       } catch (err) {
@@ -77,7 +70,7 @@ export default function About() {
     );
   }
 
-  const { title, content, sections, team } = pageData;
+  const { title, content, sections } = pageData;
 
   return (
     <ContentLayout
@@ -131,61 +124,6 @@ export default function About() {
                 </div>
               </motion.div>
             ))}
-          </div>
-        )}
-
-        {/* Team Section */}
-        {team && team.length > 0 && (
-          <div className="mb-20">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 flex items-center justify-center gap-3">
-                <Users className="w-8 h-8 text-blue-500 dark:text-blue-400" />
-                团队成员
-              </h2>
-              <p className="text-gray-600 dark:text-gray-300 text-lg">
-                专业、专注、创新的团队
-              </p>
-            </motion.div>
-
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {team.map((member, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1 + 0.6, duration: 0.5 }}
-                  className="rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 text-center hover:shadow-lg transition-all duration-300"
-                >
-                  {member.avatar && (
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-100 dark:border-blue-900/30">
-                      <img
-                        src={member.avatar}
-                        alt={member.name || ''}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  )}
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                    {member.name}
-                  </h3>
-                  {member.position && (
-                    <p className="text-blue-600 dark:text-blue-400 font-medium mb-3">
-                      {member.position}
-                    </p>
-                  )}
-                  {member.description && (
-                    <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                      {member.description}
-                    </p>
-                  )}
-                </motion.div>
-              ))}
-            </div>
           </div>
         )}
       </div>
