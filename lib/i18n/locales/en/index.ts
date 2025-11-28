@@ -5,6 +5,7 @@ import stats from './stats';
 import common from './common';
 import nav from './nav';
 import footer from './footer';
+import standards from './standards';
 
 export default {
   hero,
@@ -13,6 +14,7 @@ export default {
   stats,
   common,
   nav,
-  footer
+  footer,
+  standards
 };
 

@@ -146,16 +146,8 @@ const ResizableTable = <T extends object>({
   };
 
   return (
-    <div className="relative dark:bg-gray-800">
-      <Button
-        className="absolute right-0 top-[-40px]"
-        size="small"
-        onClick={resetColumnWidths}
-      >
-        重置列宽
-      </Button>
+    <div className="relative">
       <Table<T>
-        className="dark:bg-gray-800"
         {...props}
         columns={resizableColumns}
         components={{

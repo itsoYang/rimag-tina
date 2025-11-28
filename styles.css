@@ -119,3 +119,331 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Glass Morphism Styles for Standards Query Page */
+@layer components {
+  /* 玻璃拟态面板基础 */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    box-shadow: 0 4px 12px 0 rgba(31, 38, 135, 0.1);
+  }
+
+  /* 暗色模式玻璃拟态 */
+  .dark .glass-panel {
+    background: rgba(17, 24, 39, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .dark .glass-card {
+    background: rgba(17, 24, 39, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .dark .glass-card:hover {
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  /* Ant Design Table Customization - Enhanced */
+  .ant-table-wrapper .ant-table {
+    background: transparent !important;
+    font-size: 13px;
+  }
+
+  .ant-table-wrapper .ant-table-container {
+    background: transparent !important;
+    border-radius: 8px;
+  }
+
+  /* Table Header Styles - Enhanced */
+  .ant-table-thead > tr > th {
+    background: rgba(243, 244, 246, 0.9) !important;
+    color: #1f2937 !important;
+    font-weight: 600;
+    font-size: 13px;
+    border-bottom: 2px solid rgba(59, 130, 246, 0.2) !important;
+    backdrop-filter: blur(8px);
+    padding: 10px 12px !important;
+  }
+
+  .dark .ant-table-thead > tr > th {
+    background: rgba(31, 41, 55, 0.9) !important;
+    color: #f3f4f6 !important;
+    border-bottom: 2px solid rgba(96, 165, 250, 0.3) !important;
+  }
+
+  /* Table Row Styles - Enhanced */
+  .ant-table-tbody > tr > td {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(229, 231, 235, 0.4) !important;
+    transition: all 0.2s ease;
+    padding: 8px 12px !important;
+    font-size: 13px;
+  }
+
+  .dark .ant-table-tbody > tr > td {
+    color: #e5e7eb !important;
+    border-bottom: 1px solid rgba(75, 85, 99, 0.4) !important;
+  }
+
+  /* Hover Effect - Enhanced */
+  .ant-table-tbody > tr:hover > td {
+    background: rgba(59, 130, 246, 0.08) !important;
+    box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.1);
+  }
+
+  .dark .ant-table-tbody > tr:hover > td {
+    background: rgba(59, 130, 246, 0.15) !important;
+    box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.2);
+  }
+
+  /* Selected Row Effect */
+  .ant-table-tbody > tr.ant-table-row-selected > td {
+    background: rgba(59, 130, 246, 0.12) !important;
+  }
+
+  /* Fixed Column Styles */
+  .ant-table-cell-fix-left,
+  .ant-table-cell-fix-right {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(12px);
+  }
+
+  .dark .ant-table-cell-fix-left,
+  .dark .ant-table-cell-fix-right {
+    background: rgba(17, 24, 39, 0.95) !important;
+  }
+
+  /* Table Cell Link Styles */
+  .ant-table-tbody .ant-table-cell a {
+    color: #2563eb !important;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .ant-table-tbody .ant-table-cell a:hover {
+    color: #1d4ed8 !important;
+    text-decoration: underline;
+  }
+
+  .dark .ant-table-tbody .ant-table-cell a {
+    color: #60a5fa !important;
+  }
+
+  .dark .ant-table-tbody .ant-table-cell a:hover {
+    color: #93c5fd !important;
+  }
+
+  /* Tree Component Customization - Enhanced */
+  .ant-tree {
+    background: transparent !important;
+    color: inherit !important;
+    font-size: 13px;
+  }
+
+  .dark .ant-tree {
+    color: #e5e7eb !important;
+  }
+
+  .ant-tree .ant-tree-treenode {
+    padding: 2px 0;
+  }
+
+  .ant-tree .ant-tree-node-content-wrapper {
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    padding: 4px 8px;
+  }
+
+  .ant-tree .ant-tree-node-content-wrapper:hover {
+    background: rgba(59, 130, 246, 0.12) !important;
+  }
+
+  .ant-tree .ant-tree-node-selected .ant-tree-node-content-wrapper {
+    background: rgba(59, 130, 246, 0.2) !important;
+    color: #2563eb !important;
+    font-weight: 500;
+  }
+
+  .dark .ant-tree .ant-tree-node-selected .ant-tree-node-content-wrapper {
+    color: #60a5fa !important;
+    background: rgba(59, 130, 246, 0.25) !important;
+  }
+
+  /* Tree Switcher Icon */
+  .ant-tree .ant-tree-switcher {
+    color: #6b7280;
+  }
+
+  .dark .ant-tree .ant-tree-switcher {
+    color: #9ca3af;
+  }
+
+  /* Input and Select Customization - Enhanced */
+  .ant-input,
+  .ant-select-selector,
+  .ant-input-search {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border-color: rgba(209, 213, 219, 0.5) !important;
+    backdrop-filter: blur(4px);
+    transition: all 0.2s ease;
+    font-size: 13px;
+  }
+
+  .ant-input:hover,
+  .ant-select-selector:hover {
+    border-color: rgba(59, 130, 246, 0.5) !important;
+  }
+
+  .ant-input:focus,
+  .ant-select-focused .ant-select-selector {
+    border-color: rgba(59, 130, 246, 0.8) !important;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+  }
+
+  .dark .ant-input,
+  .dark .ant-select-selector {
+    background: rgba(31, 41, 55, 0.6) !important;
+    border-color: rgba(75, 85, 99, 0.5) !important;
+    color: #e5e7eb !important;
+  }
+
+  .dark .ant-input:hover,
+  .dark .ant-select-selector:hover {
+    border-color: rgba(96, 165, 250, 0.5) !important;
+  }
+
+  /* Button Styles */
+  .ant-btn-primary {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+    border: none !important;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+  }
+
+  .ant-btn-primary:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important;
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+  }
+
+  /* Tag Styles - Enhanced */
+  .ant-tag {
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 2px 10px !important;
+    font-weight: 500;
+    font-size: 12px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Drawer Styles */
+  .ant-drawer-content {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+  }
+
+  .dark .ant-drawer-content {
+    background: rgba(17, 24, 39, 0.95) !important;
+  }
+
+  .dark .ant-drawer-header {
+    border-bottom-color: rgba(75, 85, 99, 0.5) !important;
+  }
+
+  .dark .ant-drawer-title {
+    color: #e5e7eb !important;
+  }
+
+  .dark .ant-drawer-close {
+    color: #9ca3af !important;
+  }
+
+  /* Collapse Filter Panel */
+  .filter-collapse .ant-collapse-header {
+    padding: 12px 16px !important;
+    align-items: center !important;
+  }
+
+  .dark .filter-collapse .ant-collapse-header {
+    color: #e5e7eb !important;
+  }
+
+  .filter-collapse .ant-collapse-content-box {
+    padding: 16px !important;
+  }
+
+  /* Pagination Styles */
+  .ant-pagination {
+    font-size: 13px;
+  }
+
+  .ant-pagination-item {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border-color: rgba(209, 213, 219, 0.5) !important;
+  }
+
+  .dark .ant-pagination-item {
+    background: rgba(31, 41, 55, 0.6) !important;
+    border-color: rgba(75, 85, 99, 0.5) !important;
+  }
+
+  .dark .ant-pagination-item a {
+    color: #e5e7eb !important;
+  }
+
+  .ant-pagination-item-active {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+    border-color: transparent !important;
+  }
+
+  .ant-pagination-item-active a {
+    color: white !important;
+  }
+
+  /* Scrollbar Styles - Enhanced */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(243, 244, 246, 0.3);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.5);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(107, 114, 128, 0.8);
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    background: rgba(31, 41, 55, 0.3);
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgba(75, 85, 99, 0.5);
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: rgba(107, 114, 128, 0.8);
+  }
+}

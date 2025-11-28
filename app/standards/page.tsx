@@ -42,6 +42,7 @@ interface FilterPanelProps {
   currentFilters: Record<string, string>;
   onQuery: () => void;
   onClear: () => void;
+  onResetColumnWidths: () => void;
   selectedModality: string;
   onModalityChange: (value: string) => void;
   selectedDeviceType?: string;
@@ -156,6 +157,14 @@ const StandardsQueryPage: React.FC = () => {
   // Column resize handler
   const handleColumnResize = (columnWidths: Record<string, number>) => {
     TableColumnService.saveColumnWidths('standards-table', columnWidths);
+  };
+
+  // Reset column widths handler
+  const handleResetColumnWidths = () => {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('table-columns-standards-table');
+      window.location.reload();
+    }
   };
 
   // Drawer handlers
@@ -810,6 +819,7 @@ const StandardsQueryPage: React.FC = () => {
     currentFilters,
     onQuery,
     onClear,
+    onResetColumnWidths,
     selectedModality,
     onModalityChange,
     selectedDeviceType,
@@ -825,51 +835,55 @@ const StandardsQueryPage: React.FC = () => {
     selectedPosition,
     onPositionChange
   }) => {
+    const activeFiltersCount = Object.values(currentFilters).filter(Boolean).length;
+
     return (
-      <Collapse
-        defaultActiveKey={['1']}
-        ghost
-        className="filter-collapse dark:bg-gray-800"
-      >
-        <Panel
-          header={
-            <Space>
-              <span>筛选条件</span>
-              <Tag color="blue">{Object.values(currentFilters).filter(Boolean).length} 个筛选条件</Tag>
-            </Space>
-          }
-          key="1"
-          extra={
-            <Space>
-              <Button
-                type="primary"
-                icon={<SearchOutlined />}
-                size="small"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onQuery();
-                }}
-              >
-                查询
-              </Button>
-              <Button
-                size="small"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onClear();
-                }}
-              >
-                清除筛选
-              </Button>
-            </Space>
-          }
-        >
+      <div className="space-y-3">
+        {/* Compact filter header */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">筛选条件</span>
+            {activeFiltersCount > 0 && (
+              <Tag color="blue" className="text-xs">
+                {activeFiltersCount} 个
+              </Tag>
+            )}
+          </div>
+          <Space size="small">
+            <Button
+              type="primary"
+              icon={<SearchOutlined />}
+              size="small"
+              onClick={onQuery}
+              className="shadow-sm"
+            >
+              查询
+            </Button>
+            <Button
+              size="small"
+              onClick={onClear}
+            >
+              清除
+            </Button>
+            <Button
+              size="small"
+              onClick={onResetColumnWidths}
+              title="重置表格列宽到默认值"
+            >
+              重置列宽
+            </Button>
+          </Space>
+        </div>
+
+        {/* Optimized filter grid - 2 rows layout */}
+        <div className="space-y-2">
           <div className="grid grid-cols-4 gap-2">
             <Search
-              placeholder="输入标准编码或项目名称搜索"
+              placeholder="标准编码或项目名称"
               onSearch={onSearch}
               allowClear
               size="small"
+              className="col-span-2"
             />
             <Select
               placeholder="检查模态"
@@ -894,6 +908,9 @@ const StandardsQueryPage: React.FC = () => {
                 <Option key={type} value={type}>{type}</Option>
               ))}
             </Select>
+          </div>
+
+          <div className="grid grid-cols-4 gap-2">
             <Select
               placeholder="扫描方式"
               value={selectedScanType}
@@ -903,7 +920,7 @@ const StandardsQueryPage: React.FC = () => {
             >
               {filters.scanTypes?.map((type: CodeNamePair) => (
                 <Option key={type.code} value={type.code}>
-                  {type.code} - {type.name}
+                  {type.name}
                 </Option>
               ))}
             </Select>
@@ -919,17 +936,6 @@ const StandardsQueryPage: React.FC = () => {
               ))}
             </Select>
             <Select
-              placeholder="标签"
-              value={selectedTag}
-              onChange={onTagChange}
-              allowClear
-              size="small"
-            >
-              {filters.tags?.map((tag: string) => (
-                <Option key={tag} value={tag}>{tag}</Option>
-              ))}
-            </Select>
-            <Select
               placeholder="后处理"
               value={selectedPostProcessing}
               onChange={onPostProcessingChange}
@@ -938,7 +944,7 @@ const StandardsQueryPage: React.FC = () => {
             >
               {filters.postProcessingTypes?.map((type: CodeNamePair) => (
                 <Option key={type.code} value={type.code}>
-                  {type.code} - {type.name}
+                  {type.name}
                 </Option>
               ))}
             </Select>
@@ -951,13 +957,13 @@ const StandardsQueryPage: React.FC = () => {
             >
               {filters.positionTypes?.map((type: CodeNamePair) => (
                 <Option key={type.code} value={type.code}>
-                  {type.code} - {type.name}
+                  {type.name}
                 </Option>
               ))}
             </Select>
           </div>
-        </Panel>
-      </Collapse>
+        </div>
+      </div>
     );
   };
 
@@ -969,6 +975,7 @@ const StandardsQueryPage: React.FC = () => {
     currentFilters,
     onQuery: handleQuery,
     onClear: handleClear,
+    onResetColumnWidths: handleResetColumnWidths,
     selectedModality,
     onModalityChange: handleModalityChange,
     selectedDeviceType,
@@ -986,7 +993,7 @@ const StandardsQueryPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-gray-900 transition-colors duration-300 relative overflow-hidden">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0B1120] transition-colors duration-300 relative overflow-hidden standards-page">
       {/* Background */}
       <NetworkBackground />
 
@@ -1003,10 +1010,10 @@ const StandardsQueryPage: React.FC = () => {
 
             <div className="flex gap-6">
               {/* Left body part tree */}
-              <div className="w-[320px] flex-shrink-0 glass-card p-4 rounded-xl border border-white/20 dark:border-white/10">
-                <div className="mb-2">
-                  <h2 className="text-base font-semibold mb-3 text-gray-800 dark:text-white flex items-center gap-2">
-                    <span className="w-1 h-4 bg-blue-500 rounded-full"></span>
+              <div className="w-[280px] flex-shrink-0 glass-card p-4 rounded-xl border border-white/20 dark:border-white/10 shadow-sm">
+                <div className="mb-3">
+                  <h2 className="text-sm font-semibold mb-3 text-gray-800 dark:text-white flex items-center gap-2">
+                    <span className="w-1 h-5 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full"></span>
                     部位导航
                   </h2>
                   <BodyPartTree
@@ -1020,14 +1027,16 @@ const StandardsQueryPage: React.FC = () => {
               {/* Right content area */}
               <div className="flex-1 min-w-0">
                 {/* Current selection and filters */}
-                <div className="space-y-4 mb-6">
+                <div className="space-y-3 mb-4">
                   {/* Current filter conditions */}
-                  <div className="glass-card p-3 rounded-xl border border-white/20 dark:border-white/10">
-                    {renderCurrentFilters()}
-                  </div>
+                  {Object.values(currentFilters).filter(Boolean).length > 0 && (
+                    <div className="glass-card p-2.5 rounded-lg border border-white/20 dark:border-white/10">
+                      {renderCurrentFilters()}
+                    </div>
+                  )}
 
                   {/* Filter panel */}
-                  <div className="glass-card rounded-xl border border-white/20 dark:border-white/10 overflow-hidden">
+                  <div className="glass-card p-3 rounded-lg border border-white/20 dark:border-white/10">
                     <FilterPanel {...filterProps} />
                   </div>
                 </div>
@@ -1039,9 +1048,9 @@ const StandardsQueryPage: React.FC = () => {
                   loading={loading}
                   pagination={pagination}
                   onChange={handleTableChange}
-                  scroll={{ x: 1000, y: 'calc(100vh - 350px)' }}
+                  scroll={{ x: 1000, y: 'calc(100vh - 400px)' }}
                   rowKey="id"
-                  size="middle"
+                  size="small"
                   bordered
                   sticky
                   tableId="standards-table"

@@ -17,9 +17,8 @@ export default function Navbar() {
 
   const navItems = [
     { name: t.nav.home, href: '/' },
-    { name: t.nav.standards, href: '/standards' },
-    { name: t.nav.standards_query, href: '/standards/query' },
     { name: t.nav.overview, href: '/overview' },
+    { name: t.nav.standards_query, href: '/standards' },
     { name: t.nav.ai, href: '/ai' },
     { name: t.nav.news, href: '/news' },
     { name: t.nav.blog, href: '/blog' },
