@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 import { VideoDialogProvider } from "@/components/ui/VideoDialogContext";
 import VideoDialog from "@/components/ui/VideoDialog";
 import Navbar from "@/components/common/Navbar";
+import { ThemeProvider } from "@/contexts/ThemeContext";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 import "@/styles.css";
 import { TailwindIndicator } from "@/components/ui/breakpoint-indicator";
@@ -36,14 +38,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh" className={cn(fontSans.variable, nunito.variable, lato.variable)}>
+    <html lang="zh" className={cn(fontSans.variable, nunito.variable, lato.variable)} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const theme = localStorage.getItem('theme');
+                if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-screen bg-background font-sans antialiased">
-        <VideoDialogProvider>
-          <Navbar />
-          <main>{children}</main>
-          <VideoDialog />
-        </VideoDialogProvider>
-        <TailwindIndicator />
+        <ThemeProvider>
+          <LanguageProvider>
+            <VideoDialogProvider>
+              <Navbar />
+              <main>{children}</main>
+              <VideoDialog />
+            </VideoDialogProvider>
+            <TailwindIndicator />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
