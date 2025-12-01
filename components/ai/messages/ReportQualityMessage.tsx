@@ -18,6 +18,17 @@ const ReportQualityMessage: React.FC<ReportQualityMessageProps> = (props) => {
     return <BaseMessage {...props} />;
   }
 
+  // Preprocess markdown content to reduce excessive whitespace
+  const preprocessMarkdown = (text: string) => {
+    if (!text || typeof text !== 'string') return text;
+
+    return text
+      // Replace multiple consecutive newlines with at most two
+      .replace(/\n{3,}/g, '\n\n')
+      // Remove leading/trailing whitespace
+      .trim();
+  };
+
   return (
     <BaseMessage {...baseProps} content="" messageType={MessageType.REPORTQUALITY}>
       <div className="prose dark:prose-invert max-w-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
@@ -41,7 +52,7 @@ const ReportQualityMessage: React.FC<ReportQualityMessageProps> = (props) => {
                 : <code className="block bg-gray-100 dark:bg-gray-800 p-3 rounded my-1.5 text-sm overflow-x-auto" {...props} />,
           }}
         >
-          {String(content)}
+          {preprocessMarkdown(String(content))}
         </ReactMarkdown>
       </div>
     </BaseMessage>
