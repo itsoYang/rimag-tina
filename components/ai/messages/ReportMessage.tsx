@@ -20,7 +20,7 @@ const ReportMessage: React.FC<ReportMessageProps> = (props) => {
   return (
     <BaseMessage {...baseProps} content="" messageType={MessageType.REPORT}>
       <div className="prose dark:prose-invert max-w-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 [&>p]:my-2 [&>ul]:my-2 [&>ol]:my-2 [&>blockquote]:my-2 [&>pre]:my-2 whitespace-normal">
-        <ReactMarkdown>{content}</ReactMarkdown>
+        <ReactMarkdown>{String(content)}</ReactMarkdown>
       </div>
     </BaseMessage>
   );
