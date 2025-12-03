@@ -56,7 +56,6 @@ const NewsAndBlogs: React.FC = () => {
       </section>
     );
   }
-
   return (
     <section className="bg-slate-50 dark:bg-gray-900 relative overflow-hidden py-20 transition-colors duration-300">
       {/* Background Grid */}
@@ -163,4 +162,5 @@ const NewsAndBlogs: React.FC = () => {
 };
 
 export default NewsAndBlogs;
+
 

@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { MessageType, MessageTypeValue } from '@/types/ai';
-import { MODULES } from '@/lib/modules';
+import { getModules } from '@/lib/modules';
 import ModuleSelector from '@/components/ai/ModuleSelector';
 import ChatBox from '@/components/ai/chat/ChatBox';
 import NetworkBackground from '@/components/common/NetworkBackground';
@@ -10,6 +10,9 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 const AIPlatformPage: React.FC = () => {
   const { t } = useLanguage();
+
+  // Get localized modules
+  const MODULES = useMemo(() => getModules(t), [t]);
 
   // Currently selected module
   const [currentModule, setCurrentModule] = useState<MessageTypeValue>(

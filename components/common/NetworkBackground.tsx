@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { motion } from 'motion/react';
 
 const NetworkBackground = () => {
@@ -18,12 +18,17 @@ const NetworkBackground = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const nodes = Array.from({ length: 20 }).map((_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 4 + 2,
-  }));
+  // 使用 useMemo 固定节点位置，避免服务器端和客户端不一致
+  const nodes = useMemo(
+    () =>
+      Array.from({ length: 20 }).map((_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 4 + 2,
+      })),
+    [] // 空依赖数组，只在首次渲染时生成
+  );
 
   return (
     <div className="absolute inset-0 overflow-hidden bg-slate-50 dark:bg-gray-900 transition-colors duration-300">

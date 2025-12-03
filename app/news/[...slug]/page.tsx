@@ -27,6 +27,12 @@ export default function NewsDetailPage() {
   useEffect(() => {
     const loadNewsDetail = async () => {
       try {
+        // Next.js 15: params 可能为 null，需要检查
+        if (!params || !params.slug) {
+          setError('新闻不存在');
+          return;
+        }
+        
         const slug = Array.isArray(params.slug) ? params.slug.join('/') : params.slug;
         console.log('Loading news with slug:', slug);
 
@@ -55,10 +61,10 @@ export default function NewsDetailPage() {
       }
     };
 
-    if (params.slug) {
+    if (params?.slug) {
       loadNewsDetail();
     }
-  }, [params.slug]);
+  }, [params?.slug]);
 
   if (loading) {
     return (

@@ -3,9 +3,21 @@ import React from 'react';
 import { Button, wrapFieldsWithMeta } from 'tinacms';
 import { BiChevronRight } from 'react-icons/bi';
 import { GoCircleSlash } from 'react-icons/go';
-import { Icon, IconOptions } from '../../components/icon';
+import * as BoxIcons from 'react-icons/bi';
 import { Popover, PopoverButton, Transition, PopoverPanel } from '@headlessui/react';
 import { ColorPickerInput } from './color';
+
+// 直接定义 IconOptions，避免外部依赖
+export const IconOptions: Record<string, React.ComponentType<any>> = {
+  ...BoxIcons,
+};
+
+// 简化的 Icon 组件用于预览
+const Icon = ({ data, className = '' }: { data: { name: string; size?: string; color?: string }; className?: string }) => {
+  const IconSVG = IconOptions[data.name];
+  if (!IconSVG) return null;
+  return <IconSVG className={`text-blue-500 ${className}`} />;
+};
 
 const parseIconName = (name: string) => {
   const splitName = name.split(/(?=[A-Z])/);

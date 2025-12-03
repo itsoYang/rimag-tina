@@ -28,6 +28,12 @@ export default function BlogDetailPage() {
   useEffect(() => {
     const loadBlogDetail = async () => {
       try {
+        // Next.js 15: params 可能为 null，需要检查
+        if (!params || !params.slug) {
+          setError('博客文章不存在');
+          return;
+        }
+        
         const slug = Array.isArray(params.slug) ? params.slug.join('/') : params.slug;
         console.log('Loading blog with slug:', slug);
 
@@ -57,10 +63,10 @@ export default function BlogDetailPage() {
       }
     };
 
-    if (params.slug) {
+    if (params?.slug) {
       loadBlogDetail();
     }
-  }, [params.slug]);
+  }, [params?.slug]);
 
   if (loading) {
     return (

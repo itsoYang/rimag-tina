@@ -723,7 +723,16 @@ const StandardsQueryPage: React.FC = () => {
       setFilterOptionsLoading(true);
       const response = await fetch(API_ENDPOINTS.STANDARDS.FILTERS(selectedModality));
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        console.warn(`API 接口暂不可用: ${response.status}`);
+        // 设置默认空数据，不中断页面
+        setFilters(prev => ({ 
+          ...prev, 
+          scanTypes: [],
+          bodyParts: [],
+          directions: [],
+          contrasts: []
+        }));
+        return;
       }
       const data = await response.json();
 
@@ -1092,7 +1101,7 @@ const StandardsQueryPage: React.FC = () => {
             placement="right"
             onClose={onClose}
             open={drawerVisible}
-            width={600}
+            size="large"
             closeIcon={<div className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"><X className="w-5 h-5 text-gray-500" /></div>}
             className="glass-drawer"
             styles={{

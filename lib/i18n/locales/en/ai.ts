@@ -22,7 +22,7 @@ export default {
       description: 'Enter clinical symptoms or diagnosis to recommend appropriate imaging examinations',
       inputPlaceholder: 'Enter clinical manifestations...',
       examples: [
-        'Patient with headache and nausea for 3 days',
+        'The patient is a 45-year-old male who has been experiencing headache and nausea for 3 days.',
         '27-year-old pregnant woman at 24 weeks, sudden chest pain and dyspnea, elevated D-dimer, suspected pulmonary embolism.',
       ],
     },

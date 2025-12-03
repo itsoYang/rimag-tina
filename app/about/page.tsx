@@ -51,7 +51,7 @@ export default function About() {
   if (isLoading) {
     return (
       <ContentLayout title="关于我们" subtitle="了解我们的使命和团队">
-        <div className="space-y-8">
+        <div className="space-y-8" suppressHydrationWarning>
           {[1, 2, 3].map((i) => (
             <div key={i} className="h-64 rounded-xl animate-pulse bg-white/50 dark:bg-white/5 border border-gray-200 dark:border-gray-700" />
           ))}
@@ -77,7 +77,7 @@ export default function About() {
       title={title}
       subtitle="致力于推动医学影像行业标准化发展"
     >
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8" suppressHydrationWarning>
         {/* Main Content */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
