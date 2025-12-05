@@ -3,7 +3,7 @@
 // 环境变量
 export const ENV = {
   // 后端 API 基础 URL
-  API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL || 'https://bzh.rimagcloud.com',
+  API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL || '/api',
 };
 
 // API 端点配置

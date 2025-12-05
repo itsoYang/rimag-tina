@@ -11,8 +11,8 @@ import Overview from "./collection/overview";
 const config = defineConfig({
   // TinaCloud 配置（必填）
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
-  branch: process.env.NEXT_PUBLIC_TINA_BRANCH || 
-          process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || 
+  branch: process.env.NEXT_PUBLIC_TINA_BRANCH ||
+         process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF ||
           'main',
   token: process.env.TINA_TOKEN,
 

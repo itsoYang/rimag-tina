@@ -67,10 +67,19 @@ pnpm dev
 ```bash
 # 在项目根目录执行
 docker build \
-  --build-arg NEXT_PUBLIC_TINA_CLIENT_ID=你的_client_id \
-  --build-arg TINA_TOKEN=你的_token \
+  --build-arg NEXT_PUBLIC_TINA_CLIENT_ID=1493ff9c-3120-4736-b645-6a5ab674bae0 \
+  --build-arg TINA_TOKEN=f817cc38adb555349c5a38c6d336a6539377c669 \
   --build-arg NEXT_PUBLIC_TINA_BRANCH=main \
-  -t rimag-tina:latest .
+  --build-arg NEXT_PUBLIC_API_BASE_URL=http://210.12.11.251:27860 \
+  -t rimag-official-web:3.3.0 .
+  
+  
+docker build \
+  --build-arg NEXT_PUBLIC_TINA_CLIENT_ID=1493ff9c-3120-4736-b645-6a5ab674bae0 \
+  --build-arg TINA_TOKEN=f817cc38adb555349c5a38c6d336a6539377c669 \
+  --build-arg NEXT_PUBLIC_TINA_BRANCH=main \
+  --build-arg NEXT_PUBLIC_API_BASE_URL=http://10.101.1.178:7860 \
+  -t rimag-official-web:3.3.0 .
 ```
 
 > **重要**：TinaCMS 的 `NEXT_PUBLIC_*` 环境变量会在构建时编译到前端代码中，因此必须在构建镜像时传入。

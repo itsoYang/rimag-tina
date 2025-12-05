@@ -8,7 +8,7 @@
 // ============================================
 export const ENV = {
   // Backend API Base URL
-  API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL || 'https://bzh.rimagcloud.com',
+  API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL || '/api',
 } as const;
 
 // ============================================

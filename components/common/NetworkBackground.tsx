@@ -22,10 +22,10 @@ const NetworkBackground = () => {
   const nodes = useMemo(
     () =>
       Array.from({ length: 20 }).map((_, i) => ({
-        id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: Math.random() * 4 + 2,
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 4 + 2,
       })),
     [] // 空依赖数组，只在首次渲染时生成
   );
