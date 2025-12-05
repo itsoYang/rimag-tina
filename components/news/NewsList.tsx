@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, ArrowRight, Tag } from 'lucide-react';
 import { motion } from 'motion/react';
 import client from '@/tina/__generated__/client';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface NewsItem {
   node: {
@@ -34,6 +35,7 @@ interface NewsListProps {
 const ITEMS_PER_PAGE = 5;
 
 const NewsList: React.FC<NewsListProps> = ({ filter }) => {
+  const { locale } = useLanguage();
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -48,7 +50,11 @@ const NewsList: React.FC<NewsListProps> = ({ filter }) => {
         });
 
         if (result.data?.newsConnection?.edges) {
-          setNewsItems(result.data.newsConnection.edges as NewsItem[]);
+          const filtered = result.data.newsConnection.edges.filter(({ node }: NewsItem) => {
+            const filename = node._sys.filename;
+            return filename.includes(`.${locale}.md`) || filename.endsWith(`.${locale}`);
+          });
+          setNewsItems(filtered as NewsItem[]);
         }
         setLoading(false);
       } catch (err) {
@@ -59,7 +65,7 @@ const NewsList: React.FC<NewsListProps> = ({ filter }) => {
     };
 
     loadNews();
-  }, []);
+  }, [locale]);
 
   const filteredNews = newsItems.filter(item => {
     if (filter?.category && item.node.category !== filter.category) {

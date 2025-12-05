@@ -31,7 +31,7 @@ interface BlogItem {
 }
 
 export default function BlogPage() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [blogItems, setBlogItems] = useState<BlogItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -68,7 +68,11 @@ export default function BlogPage() {
         });
 
         if (result.data?.blogConnection?.edges) {
-          setBlogItems(result.data.blogConnection.edges as BlogItem[]);
+          const filtered = result.data.blogConnection.edges.filter(({ node }: BlogItem) => {
+            const path = node._sys.relativePath;
+            return path.includes(`.${locale}.md`) || path.endsWith(`.${locale}`);
+          });
+          setBlogItems(filtered as BlogItem[]);
         }
       } catch (err) {
         console.error('Failed to load blogs:', err);
@@ -79,7 +83,7 @@ export default function BlogPage() {
     };
 
     loadBlogs();
-  }, []);
+  }, [locale]);
 
   const filteredBlogs = blogItems.filter((item) => {
     if (selectedCategory && item.node.category !== selectedCategory) {

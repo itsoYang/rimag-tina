@@ -23,7 +23,7 @@ interface ContentItem {
 
 const NewsAndBlogs: React.FC = () => {
   const router = useRouter();
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [newsItems, setNewsItems] = useState<ContentItem[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -32,11 +32,15 @@ const NewsAndBlogs: React.FC = () => {
       try {
         const newsResult = await client.queries.newsConnection({
           sort: "date",
-          first: 10
+          first: 50
         });
 
         const edges = newsResult.data?.newsConnection?.edges || [];
-        setNewsItems(edges.slice(0, 6) as ContentItem[]);
+        const filtered = edges.filter(({ node }: ContentItem) => {
+          const filename = node._sys.filename;
+          return filename.includes(`.${locale}.md`) || filename.endsWith(`.${locale}`);
+        });
+        setNewsItems(filtered.slice(0, 6) as ContentItem[]);
         setLoading(false);
       } catch (err) {
         console.error('Failed to load content:', err);
@@ -45,7 +49,7 @@ const NewsAndBlogs: React.FC = () => {
     };
 
     loadContent();
-  }, []);
+  }, [locale]);
 
   if (loading) {
     return (
