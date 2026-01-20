@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { MessageCircle, Mail, Linkedin } from 'lucide-react';
+import { MessageCircle, Mail, Linkedin, Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
@@ -27,6 +27,12 @@ const Footer = () => {
               <li>
                 <Link href="/ai" className="hover:text-white transition-colors">
                   {t.nav.ai}
+                </Link>
+              </li>
+              <li>
+                <Link href="/download" className="hover:text-white transition-colors inline-flex items-center">
+                  <Download size={16} className="mr-1" />
+                  {t.download.title}
                 </Link>
               </li>
               <li>

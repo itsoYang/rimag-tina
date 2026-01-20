@@ -7,6 +7,7 @@ import nav from './nav';
 import footer from './footer';
 import standards from './standards';
 import ai from './ai';
+import download from './download';
 
 export default {
   hero,
@@ -17,6 +18,7 @@ export default {
   nav,
   footer,
   standards,
-  ai
+  ai,
+  download
 };
 
