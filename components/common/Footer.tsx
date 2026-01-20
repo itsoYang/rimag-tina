@@ -31,8 +31,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link href="/download" className="hover:text-white transition-colors inline-flex items-center">
-                  <Download size={16} className="mr-1" />
-                  {t.download.title}
+                    {t.download.title}
                 </Link>
               </li>
               <li>
